@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+
+<a href="/lista-cała"> Wszystkie produkty</a></br>
+<a href="/lista?kategoria=GROCERY"> Produkty spożywcze </a></br>
+<a href="/lista?kategoria=APPLIANCES"> Produkty AGD </a></br>
+<a href="/lista?kategoria=OTHER"> Produkty inne </a></br>
+<br>
+<h3>Dodaj nowy produkt:</h3>
+<form method="post" action="/add">
+    <input type="text" name="name" placeholder="nazwa produktu" required><br/>
+    <input type="number" name="price" placeholder="cena produktu" required> <br/>
+    <select name="category" required>
+        <option value="GROCERY">spożywcze</option>
+        <option value="APLLIANCES">AGD</option>
+        <option value="OTHER">inne</option>
+    </select>
+    <input type="submit" value="Dodaj">
+</form>
+</body>
+</html>
