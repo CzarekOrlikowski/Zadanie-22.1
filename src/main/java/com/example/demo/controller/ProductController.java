@@ -24,24 +24,16 @@ public class ProductController {
     }
 
     @ResponseBody
-    @GetMapping ("/lista-cała")
-    public String showAllProducts() {
-        List<Product> productList = productRepository.showAll();
-
-        double totalPrice = 0.0;
-        for (Product product : productList) {
-            totalPrice += product.getPrice();
-        }
-
-        return productList.stream()
-                .map(Product::toString)
-                .collect(Collectors.joining("<br>")) + "<br><br>" + "Lączna cena produktów: " + totalPrice;
-    }
-
-    @ResponseBody
     @GetMapping ("/lista")
     public String showCategory(@RequestParam (value="kategoria") Category category) {
-        List<Product> productList = productRepository.showCategory(category);
+
+        List<Product> productList;
+
+        if (category !=null) {
+            productList = productRepository.showCategory(category);
+        }  else {
+            productList = productRepository.showAll();
+        }
 
         double totalPrice = 0.0;
         for (Product product : productList) {
